@@ -109,7 +109,7 @@ def show_congratulations(parent, message=None, callback=None, is_ai=False):
     overlay = ctk.CTkFrame(parent, fg_color=("#F9F9FB", "#2C2C2E"), corner_radius=20, border_width=1, border_color=("#D1D1D6", "#38383A"))
     overlay.place(relx=0.5, rely=0.5, anchor="center")
     
-    icon_name = "ai_win.png" if is_ai else "icon.png"
+    icon_name = "ai_win.png" if is_ai else "trophy.png"
     
     import sys
     if getattr(sys, 'frozen', False):
