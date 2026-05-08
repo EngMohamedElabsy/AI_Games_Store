@@ -23,7 +23,6 @@ def play_win_sound(is_ai, stop_event, on_finish):
     bundle_sound_dir = os.path.join(bundle_dir, "assets", "sounds")
     user_sound_dir = os.path.join(user_dir, "assets", "sounds")
     
-    os.makedirs(user_sound_dir, exist_ok=True)
     
     user_mp3 = os.path.join(user_sound_dir, "AI Win.mp3" if is_ai else "Human Win.mp3")
     bundle_mp3 = os.path.join(bundle_sound_dir, "AI Win.mp3" if is_ai else "Human Win.mp3")
