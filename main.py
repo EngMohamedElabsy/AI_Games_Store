@@ -15,6 +15,20 @@ class AIGamesApp(ctk.CTk):
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
         
+        # --- Window Icon ---
+        import sys
+        import os
+        if getattr(sys, 'frozen', False):
+            bundle_dir = sys._MEIPASS
+        else:
+            bundle_dir = os.path.dirname(os.path.abspath(__file__))
+        icon_path = os.path.join(bundle_dir, "assets", "ui", "icon.ico")
+        if os.path.exists(icon_path):
+            try:
+                self.iconbitmap(icon_path)
+            except:
+                pass
+        
         # --- Fullscreen & Layout state ---
         self.is_fullscreen = False
         self.sidebar_hidden = False

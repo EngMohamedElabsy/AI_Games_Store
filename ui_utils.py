@@ -25,12 +25,14 @@ def play_win_sound(is_ai, stop_event, on_finish):
     
     os.makedirs(user_sound_dir, exist_ok=True)
     
-    mp3_file = os.path.join(user_sound_dir, "AI Win.mp3" if is_ai else "Human Win.mp3")
+    user_mp3 = os.path.join(user_sound_dir, "AI Win.mp3" if is_ai else "Human Win.mp3")
+    bundle_mp3 = os.path.join(bundle_sound_dir, "AI Win.mp3" if is_ai else "Human Win.mp3")
     wav_file = os.path.join(bundle_sound_dir, "ai_win.wav" if is_ai else "win.wav")
     meme_wav = os.path.join(user_sound_dir, "meme.wav")
     
     target_file = None
-    if os.path.exists(mp3_file): target_file = mp3_file
+    if os.path.exists(user_mp3): target_file = user_mp3
+    elif os.path.exists(bundle_mp3): target_file = bundle_mp3
     elif not is_ai and os.path.exists(meme_wav): target_file = meme_wav
     elif os.path.exists(wav_file): target_file = wav_file
     
