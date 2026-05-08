@@ -12,7 +12,8 @@
 * **Smart Auto-Scaling:** Fully responsive boards. Press `F11` or use keyboard shortcuts (`Ctrl + Scroll` / `+` / `-`) to auto-fit and zoom the game boards perfectly to your screen size.
 * **Intelligent Win System:** 
   * 🧠 **AI Win:** Displays a robotic overlay with futuristic calculation sound effects.
-  * 🏆 **Human Win:** Displays a golden trophy with triumphant fanfare or your custom `.mp3` meme sounds.
+  * 🏆 **Human Win:** Displays a golden trophy with triumphant fanfare.
+* **Custom Meme Sounds:** Add your own `AI Win.mp3` or `Human Win.mp3` to the `assets/sounds/` folder to personalize your victories!
 * **Multi-threading:** AI solvers run in the background, keeping the UI smooth and responsive during heavy algorithm calculations.
 
 ---
@@ -45,3 +46,40 @@ A classic constraint satisfaction problem where the goal is to place $N$ queens 
    ```bash
    git clone https://github.com/EngMohamedElabsy/AI_Games_Store.git
    cd AI_Games_Store
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run the application:**
+   ```bash
+   python main.py
+   ```
+
+---
+
+## 🛠️ Packaging as Standalone App (.exe)
+
+Want to share the game as a single Windows executable? We've made it easy!
+
+1. Make sure you have **PyInstaller** installed (`pip install pyinstaller`).
+2. Simply double-click on **`build.bat`** in the root directory.
+3. The script will automatically compile the code, bundle the assets (icons and sounds), and generate a single file.
+4. Once finished, you will find your game inside the **`dist/`** folder as `AI_Games_Store.exe`.
+
+---
+
+## 🎵 Customizing Your Experience
+
+You can customize the winning sounds even in the compiled version:
+1. Create an `assets/sounds/` folder next to your `AI_Games_Store.exe`.
+2. Place your custom `AI Win.mp3` or `Human Win.mp3` files inside.
+3. The game will automatically prioritize your files over the built-in sounds!
+
+---
+
+## 👨‍💻 Developer
+**Eng. Mohamed Elabsy**
+[GitHub Profile](https://github.com/EngMohamedElabsy)
