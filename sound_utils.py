@@ -13,7 +13,12 @@ except:
 def _play_sound(sound_type):
     if _pygame_initialized:
         try:
-            assets_dir = os.path.join(os.path.dirname(__file__), "assets", "sounds")
+            import sys
+            if getattr(sys, 'frozen', False):
+                bundle_dir = sys._MEIPASS
+            else:
+                bundle_dir = os.path.dirname(__file__)
+            assets_dir = os.path.join(bundle_dir, "assets", "sounds")
             path = os.path.join(assets_dir, f"{sound_type}.mp3")
             if os.path.exists(path):
                 pygame.mixer.Sound(path).play()

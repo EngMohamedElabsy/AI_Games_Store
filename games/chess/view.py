@@ -274,7 +274,13 @@ class ChessView(ctk.CTkFrame):
             chess.BISHOP: ('wB', 'bB'), chess.ROOK: ('wR', 'bR'),
             chess.QUEEN: ('wQ', 'bQ'), chess.KING: ('wK', 'bK')
         }
-        assets_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "assets", "chess_pieces")
+        import sys
+        if getattr(sys, 'frozen', False):
+            base_dir = sys._MEIPASS
+        else:
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+        assets_dir = os.path.join(base_dir, "assets", "chess_pieces")
+        
         for pt, (w_name, b_name) in pieces.items():
             for color, name in [(chess.WHITE, w_name), (chess.BLACK, b_name)]:
                 path = os.path.join(assets_dir, f"{name}.png")
@@ -294,7 +300,13 @@ class ChessView(ctk.CTkFrame):
             chess.QUEEN: ('wQ', 'bQ'), chess.KING: ('wK', 'bK')
         }
         
-        assets_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "assets", "chess_pieces")
+        import sys
+        if getattr(sys, 'frozen', False):
+            base_dir = sys._MEIPASS
+        else:
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+        assets_dir = os.path.join(base_dir, "assets", "chess_pieces")
+        
         for pt, (w_name, b_name) in pieces.items():
             for color, name in [(chess.WHITE, w_name), (chess.BLACK, b_name)]:
                 path = os.path.join(assets_dir, f"{name}.png")

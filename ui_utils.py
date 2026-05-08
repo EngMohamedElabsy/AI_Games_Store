@@ -11,12 +11,23 @@ except Exception:
 
 def play_win_sound(is_ai, stop_event, on_finish):
     import os
-    sound_dir = os.path.join(os.path.dirname(__file__), "assets", "sounds")
-    os.makedirs(sound_dir, exist_ok=True)
+    import sys
     
-    mp3_file = os.path.join(sound_dir, "AI Win.mp3" if is_ai else "Human Win.mp3")
-    wav_file = os.path.join(sound_dir, "ai_win.wav" if is_ai else "win.wav")
-    meme_wav = os.path.join(sound_dir, "meme.wav")
+    if getattr(sys, 'frozen', False):
+        bundle_dir = sys._MEIPASS
+        user_dir = os.path.dirname(sys.executable)
+    else:
+        bundle_dir = os.path.dirname(__file__)
+        user_dir = bundle_dir
+        
+    bundle_sound_dir = os.path.join(bundle_dir, "assets", "sounds")
+    user_sound_dir = os.path.join(user_dir, "assets", "sounds")
+    
+    os.makedirs(user_sound_dir, exist_ok=True)
+    
+    mp3_file = os.path.join(user_sound_dir, "AI Win.mp3" if is_ai else "Human Win.mp3")
+    wav_file = os.path.join(bundle_sound_dir, "ai_win.wav" if is_ai else "win.wav")
+    meme_wav = os.path.join(user_sound_dir, "meme.wav")
     
     target_file = None
     if os.path.exists(mp3_file): target_file = mp3_file
@@ -97,7 +108,14 @@ def show_congratulations(parent, message=None, callback=None, is_ai=False):
     overlay.place(relx=0.5, rely=0.5, anchor="center")
     
     icon_name = "ai_win.png" if is_ai else "trophy.png"
-    trophy_path = os.path.join(os.path.dirname(__file__), "assets", "ui", icon_name)
+    
+    import sys
+    if getattr(sys, 'frozen', False):
+        bundle_dir = sys._MEIPASS
+    else:
+        bundle_dir = os.path.dirname(__file__)
+        
+    trophy_path = os.path.join(bundle_dir, "assets", "ui", icon_name)
     if os.path.exists(trophy_path):
         img = Image.open(trophy_path)
         trophy_img = ctk.CTkImage(light_image=img, dark_image=img, size=(100, 100))

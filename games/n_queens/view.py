@@ -138,7 +138,13 @@ class NQueensView(ctk.CTkFrame):
             return
         self.cached_size = size
         
-        assets_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "assets", "chess_pieces")
+        import sys
+        if getattr(sys, 'frozen', False):
+            base_dir = sys._MEIPASS
+        else:
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+            
+        assets_dir = os.path.join(base_dir, "assets", "chess_pieces")
         path = os.path.join(assets_dir, "wQ.png")
         if os.path.exists(path):
             img = Image.open(path).convert("RGBA")
